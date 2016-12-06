@@ -29,7 +29,7 @@ public class view extends write_to{
                 break;
            
             i++;
-        }while (konst[i] != null);
+        }while (i < konst.length);
 		return i;
 	}
 	
@@ -43,7 +43,7 @@ public class view extends write_to{
                 break;
            
             i++;
-        }while (konst[i] != null);
+        }while (i < konst.length);
 		return i;
 	}
 	
@@ -51,21 +51,38 @@ public class view extends write_to{
 	{
 		String tmp = "Art. " + artc2 + ".";
 		String end = "Art.";
+		while(i < konst.length)
+		{
+			if(tmp.equals(konst[i]))
+                break;
+           
+            i++;
+		}
+		/*
 		do //wykrywanie miejsca poczatku konca artykulu
         {
             if(tmp.equals(konst[i]))
                 break;
            
             i++;
-        }while (konst[i] != null);
+        }while (i < konst.length);
+        */
 		
 		i++;
+		while(i < konst.length)
+		{
+			if(konst[i].startsWith(end))
+				break;
+			i++;
+		}
+		/*
 		do // wykrywanie konca
 		{
 			if(konst[i].startsWith(end))
 				break;
 			i++;
-		}while (konst[i] != null);
+		}while (i < konst.length);
+		*/
 		
 		return i-1;
 	}
