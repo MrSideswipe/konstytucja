@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public abstract class write_to {
-	public write_to()
+public abstract class File {
+	public File()
 	{
 		
 	}

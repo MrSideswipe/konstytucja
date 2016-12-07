@@ -2,15 +2,16 @@ package konstytucja;
 
 import java.io.FileReader;
 
-public class view extends write_to{
+public class View extends File{
 	
 	private String konst[] = new String [2015];
 	
 
 	
-	public view(String file)
+	public View(String file)
 	{
 		FileReader fr = this.open(file);
+		//FileReader fr = this.open(file);
 		//int lines = this.lines(fr);
 		//this.konst[] = new String [lines];
 		//String konst [] = new String [2014];
@@ -19,7 +20,7 @@ public class view extends write_to{
 		
 	}
 	
-	public int chapter_start (String chapter)
+	public int FindChapterStart (String chapter)
 	{
 		int i = 0;
 		String art = "Rozdzia³ " + chapter;
@@ -33,7 +34,7 @@ public class view extends write_to{
 		return i;
 	}
 	
-	public int artc_start (String artc1)
+	public int FindArticleStart (String artc1)
 	{
 		int i = 0;
 		String tmp = "Art. " + artc1 + ".";
@@ -47,7 +48,7 @@ public class view extends write_to{
 		return i;
 	}
 	
-	public int artc_end (String artc2, int i)
+	public int FindArticleEnd (String artc2, int i)
 	{
 		String tmp = "Art. " + artc2 + ".";
 		String end = "Art.";
@@ -87,9 +88,9 @@ public class view extends write_to{
 		return i-1;
 	}
 	
-	public void only_chapter(String chapter)
+	public void WriteChapter(String chapter)
 	{
-        int i = chapter_start (chapter);
+        int i = FindChapterStart (chapter);
         String art_next = "Rozdzia³";
         
        
@@ -109,10 +110,10 @@ public class view extends write_to{
         }while(!konst[i].startsWith(art_next));
 	}
 	
-	public void art_art(String artc1, String artc2)
+	public void WriteArticles(String artc1, String artc2)
 	{
-		int start = artc_start(artc1);
-		int end = artc_end(artc2, start);
+		int start = FindArticleStart(artc1);
+		int end = FindArticleEnd(artc2, start);
 		
 		int i;
 		
@@ -132,7 +133,7 @@ public class view extends write_to{
         }
 	}
 	
-	public void whole ()
+	public void WriteWhole ()
 	{
 		int i = 0;
 		do
