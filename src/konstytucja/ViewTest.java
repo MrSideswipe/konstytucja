@@ -170,7 +170,8 @@ public class ViewTest {
 		{
 			View test = new View("konstytucja.txt");
 			test.WriteWhole();
-			//Runtime.getRuntime().exec("cls");
+			for (int i = 0; i < 50; ++i) System.out.println();
+
 			assertTrue (true);
 			
 		}

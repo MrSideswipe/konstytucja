@@ -66,15 +66,7 @@ public class View extends File{
            
             i++;
 		}
-		/*
-		do //wykrywanie miejsca poczatku konca artykulu
-        {
-            if(tmp.equals(konst[i]))
-                break;
-           
-            i++;
-        }while (i < konst.length);
-        */
+
 		
 		i++;
 		while(i < konst.length)
@@ -83,14 +75,6 @@ public class View extends File{
 				break;
 			i++;
 		}
-		/*
-		do // wykrywanie konca
-		{
-			if(konst[i].startsWith(end))
-				break;
-			i++;
-		}while (i < konst.length);
-		*/
 		
 		return i-1;
 	}

@@ -10,77 +10,13 @@ public abstract class File {
 	{
 		
 	}
-	/*
-	
-	private String konst[] = new String [2014];
-	
 
-	
-	public write_to(String file)
-	{
-		FileReader fr = this.open(file);
-		//int lines = this.lines(fr);
-		//this.konst[] = new String [lines];
-		//String konst [] = new String [2014];
-		this.write(fr, this.konst);
-		this.close(fr);	
-		
-	}
-	*/
-	
-	/*
-	public int lines(String file)
-	{
-		int lines = 0;
-		BufferedReader reader;
-		
-		try
-		{
-			reader = new BufferedReader(new FileReader(file));
-		}
-		catch (FileNotFoundException e)
-        {
-            System.out.println("Blad otwierania");
-            System.exit(1);
-        }
-		
-		try
-		{
-			while (reader.readLine() != null) lines++;
-			reader.close();
-		}
-		catch(IOException e)
-        {
-            System.out.println("Blad odczytu");
-            System.exit(2);
-        }
-		
-		try{
-			reader.close();
-        }
-        catch(IOException e)
-        {
-            System.out.println("Blad przy zamykaniu");
-            System.exit(3);
-        }
-		
-		return lines;
-		
-		
-	}
-	*/
-	
 	//otwieranie pliku o nazwie file
 	public FileReader open(String file) throws FileNotFoundException
 	{
 		FileReader fr = null;
-	    //try {
-	       fr = new FileReader(file);
-	     
-	    //} catch (FileNotFoundException e) {
-	    //   System.out.println("Blad otwierania");
-	    //   System.exit(1);
-	    //}
+	    fr = new FileReader(file);
+
 	    return fr;
 	}
 	
@@ -113,77 +49,44 @@ public abstract class File {
         String sub = new String();
         String temp = new String();
 		BufferedReader br = new BufferedReader(fr);
-		//try
-        //{
-            while((temp = br.readLine()) != null) // konst[i] = br.readLine()) != null
-            {
-            	/*
-            	if(temp.equals("©Kancelaria Sejmu"))
-            	{
-            		konst[i] = "";
-            		i++;
-            		konst[i] = "";
-            		br.readLine();
-            	}
-            	*/
+        while((temp = br.readLine()) != null) 
+        {
+
             	
-            	if(sub != null)
-            	{
-            		konst[i] = sub + temp;
-            		sub = null;
-            	}
+        	if(sub != null)
+        	{
+        		konst[i] = sub + temp;
+        		sub = null;
+        	}
             	
-            	else
-            	{
-            		konst[i] = temp;
-            	}
+        	else
+        	{
+        		konst[i] = temp;
+        	}
             	
-            	if(konst[i].endsWith("-"))
-            	{
-            		lastIndex = konst[i].lastIndexOf(' ');
-            		last = konst[i].length();
-            		sub = konst[i].substring(lastIndex+1, last-1);
-            		konst[i] = konst[i].substring(0, lastIndex);
-            	}
+        	if(konst[i].endsWith("-"))
+        	{
+        		lastIndex = konst[i].lastIndexOf(' ');
+        		last = konst[i].length();
+        		sub = konst[i].substring(lastIndex+1, last-1);
+        		konst[i] = konst[i].substring(0, lastIndex);
+        	}
             	
-                //System.out.println(konst[i]);
-                i++;
-            }
-            konst[i] = "Rozdzia³";
-        //}
-        //catch(IOException e)
-        //{
-        //    System.out.println("Blad odczytu");
-        //    System.exit(2);
-        //}
+                
+            i++;
+        }
+        konst[i] = "Rozdzia³";
+
 	}
 	
 	//zamykanie pliku
 	public void close(FileReader fr) throws IOException
 	{
-		//try
-		//{
-			fr.close();
-		//}
-		//catch (IOException e) 
-		//{
-		//	System.out.println("Blad zamykania");
-	    //    System.exit(3);
-		//}
+
+		fr.close();
 		return;
 	}
-	
-	/*
-	public void wypisz()
-	{
-		int i =0;
-		while (i<20)
-		{
-			System.out.println(this.konst[i]);
-			i++;
-		}
-	}
-	*/
+
 	
 	
 
