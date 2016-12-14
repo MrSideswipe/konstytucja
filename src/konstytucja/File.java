@@ -71,39 +71,41 @@ public abstract class File {
 	*/
 	
 	//otwieranie pliku o nazwie file
-	public FileReader open(String file)
+	public FileReader open(String file) throws FileNotFoundException
 	{
 		FileReader fr = null;
-	    try {
+	    //try {
 	       fr = new FileReader(file);
 	     
-	    } catch (FileNotFoundException e) {
-	       System.out.println("Blad otwierania");
-	       System.exit(1);
-	    }
+	    //} catch (FileNotFoundException e) {
+	    //   System.out.println("Blad otwierania");
+	    //   System.exit(1);
+	    //}
 	    return fr;
 	}
 	
 	// zliczanie ilosci linii w pliku juz otwartym
-	public int lines (FileReader fr)
+	/*
+	public int lines (FileReader fr) throws IOException
 	{
 		int lines = 0;
 		BufferedReader bfr = new BufferedReader(fr);
-		try
-		{
+		//try
+		//{
 			while (bfr.readLine() != null) lines++;
-		}
-		catch(IOException e)
-        {
-            System.out.println("Blad odczytu");
-            System.exit(2);
-        }
+		//}
+		//catch(IOException e)
+        //{
+        //    System.out.println("Blad odczytu");
+        //    System.exit(2);
+        //}
 		
 		return lines;
 	}
+	*/
 	
 	//zapisywanie pliku do tablicy stringow
-	public void write(FileReader fr, String konst[])
+	public void write(FileReader fr, String konst[]) throws IOException
 	{
         int i = 0;
         int lastIndex=0;
@@ -111,8 +113,8 @@ public abstract class File {
         String sub = new String();
         String temp = new String();
 		BufferedReader br = new BufferedReader(fr);
-		try
-        {
+		//try
+        //{
             while((temp = br.readLine()) != null) // konst[i] = br.readLine()) != null
             {
             	/*
@@ -148,26 +150,26 @@ public abstract class File {
                 i++;
             }
             konst[i] = "Rozdzia³";
-        }
-        catch(IOException e)
-        {
-            System.out.println("Blad odczytu");
-            System.exit(2);
-        }
+        //}
+        //catch(IOException e)
+        //{
+        //    System.out.println("Blad odczytu");
+        //    System.exit(2);
+        //}
 	}
 	
 	//zamykanie pliku
-	public void close(FileReader fr)
+	public void close(FileReader fr) throws IOException
 	{
-		try
-		{
+		//try
+		//{
 			fr.close();
-		}
-		catch (IOException e) 
-		{
-			System.out.println("Blad zamykania");
-	        System.exit(3);
-		}
+		//}
+		//catch (IOException e) 
+		//{
+		//	System.out.println("Blad zamykania");
+	    //    System.exit(3);
+		//}
 		return;
 	}
 	

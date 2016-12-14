@@ -1,14 +1,16 @@
 package konstytucja;
 
 import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class View extends File{
 	
 	private String konst[] = new String [2015];
 	
-
 	
-	public View(String file)
+	
+	public View(String file) throws FileNotFoundException, IOException
 	{
 		FileReader fr = this.open(file);
 		//FileReader fr = this.open(file);
@@ -18,6 +20,11 @@ public class View extends File{
 		this.write(fr, this.konst);
 		this.close(fr);	
 		
+	}
+	
+	public String[] ShowKonst()
+	{
+		return konst;
 	}
 	
 	public int FindChapterStart (String chapter)
@@ -93,6 +100,9 @@ public class View extends File{
         int i = FindChapterStart (chapter);
         String art_next = "Rozdzia³";
         
+        if (i > 2014)
+        	return;
+        
        
         // wypisanie zawartosci rozdzialu
        
@@ -107,17 +117,18 @@ public class View extends File{
                 System.out.println(konst[i]);
                 i++;
             }
-        }while(!konst[i].startsWith(art_next));
+        }while(i < konst.length && !konst[i].startsWith(art_next));
 	}
 	
 	public void WriteArticles(String artc1, String artc2)
 	{
+		
 		int start = FindArticleStart(artc1);
 		int end = FindArticleEnd(artc2, start);
 		
 		int i;
 		
-        for(i=start; i<=end; i++)
+        for(i=start; i<=end && i < konst.length; i++)
         {
         	//System.out.println(konst[i]);
         	
@@ -147,7 +158,7 @@ public class View extends File{
                 System.out.println(konst[i]);
                 i++;
             }
-		}while(konst[i] != null);
+		}while(i < konst.length && konst[i] != null);
 	}
 	
 }
